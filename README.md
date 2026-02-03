@@ -37,6 +37,34 @@ echo '{"error":false,"statements":[...]}' | node dist/cli.js
 
 CLI output is a JSON array of `{ nodes, edges }` per statement. Edges that are the right side of a JOIN include `join_type`, `ref_type`, and `columns` when present.
 
+### Mermaid output
+
+**Library** – get a Mermaid flowchart string from lineage:
+
+```ts
+import { parseSerializedSQL, extractLineage, lineageToMermaid } from "withy";
+
+const result = parseSerializedSQL(jsonFromDuckDB);
+if (result.ok) {
+  const lineages = extractLineage(result.data);
+  const mermaid = lineageToMermaid(lineages[0]);
+  console.log(mermaid);
+  // Multiple statements: lineages.map(lineageToMermaid).join("\n\n---\n\n")
+}
+```
+
+**CLI** – use `-f mermaid` (or `--format mermaid`) to print Mermaid instead of JSON:
+
+```bash
+# From file
+node dist/cli.js -f mermaid path/to/duckdb-output.json
+
+# From stdin
+echo '{"error":false,"statements":[...]}' | node dist/cli.js --format mermaid
+```
+
+With `npx withy` (after `npm link` or install): `npx withy -f mermaid path/to/file.json`.
+
 ## Getting input from DuckDB
 
 In DuckDB:
