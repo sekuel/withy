@@ -2,6 +2,8 @@
 
 Parse DuckDB's `json_serialize_sql` output to visualize query lineage (CTEs, subqueries).
 
+- See generated diagrams in [`EXAMPLES.md`](./EXAMPLES.md).
+
 ## Setup
 
 ```bash

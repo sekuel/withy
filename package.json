@@ -20,6 +20,7 @@
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
+    "examples": "npm run build && node dist/generate-examples.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
