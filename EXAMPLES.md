@@ -6,10 +6,10 @@ Generated from `tests/fixtures/*.json`.
 
 - Fixture: `tests/fixtures/cross_join.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT * FROM (SELECT 1 AS a) t1 CROSS JOIN (SELECT 2 AS b) t2')
+SELECT * FROM (SELECT 1 AS a) t1 CROSS JOIN (SELECT 2 AS b) t2
 ```
 
 ```mermaid
@@ -35,10 +35,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/cte.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('WITH cte1 AS (SELECT 1) SELECT * FROM cte1')
+WITH cte1 AS (SELECT 1) SELECT * FROM cte1
 ```
 
 ```mermaid
@@ -60,10 +60,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/except.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT n FROM (SELECT 1 AS n) EXCEPT SELECT n FROM (SELECT 2 AS n)')
+SELECT n FROM (SELECT 1 AS n) EXCEPT SELECT n FROM (SELECT 2 AS n)
 ```
 
 ```mermaid
@@ -89,10 +89,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/having_subquery.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT customer_id, COUNT(*) AS cnt FROM orders GROUP BY customer_id HAVING COUNT(*) > (SELECT AVG(cnt) FROM (SELECT COUNT(*) AS cnt FROM orders GROUP BY customer_id) t)')
+SELECT customer_id, COUNT(*) AS cnt FROM orders GROUP BY customer_id HAVING COUNT(*) > (SELECT AVG(cnt) FROM (SELECT COUNT(*) AS cnt FROM orders GROUP BY customer_id) t)
 ```
 
 ```mermaid
@@ -126,10 +126,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/inner_join_on.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT a.x, b.y FROM (SELECT 1 AS x) a INNER JOIN (SELECT 1 AS y) b ON a.x = b.y')
+SELECT a.x, b.y FROM (SELECT 1 AS x) a INNER JOIN (SELECT 1 AS y) b ON a.x = b.y
 ```
 
 ```mermaid
@@ -155,10 +155,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/intersect.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT x FROM (SELECT 1 AS x) INTERSECT SELECT x FROM (SELECT 1 AS x)')
+SELECT x FROM (SELECT 1 AS x) INTERSECT SELECT x FROM (SELECT 1 AS x)
 ```
 
 ```mermaid
@@ -184,10 +184,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/multiple_ctes.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('WITH a AS (SELECT 1 AS id), b AS (SELECT id FROM a) SELECT * FROM b')
+WITH a AS (SELECT 1 AS id), b AS (SELECT id FROM a) SELECT * FROM b
 ```
 
 ```mermaid
@@ -215,10 +215,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/nested_subqueries.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT library_id, location, book_id FROM (SELECT library_id, location FROM (SELECT library_id, location, city FROM libraries)) JOIN (SELECT library_id, book_id FROM books) b ON l.library_id = b.library_id')
+SELECT library_id, location, book_id FROM (SELECT library_id, location FROM (SELECT library_id, location, city FROM libraries)) JOIN (SELECT library_id, book_id FROM books) b ON l.library_id = b.library_id
 ```
 
 ```mermaid
@@ -257,10 +257,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/qualify.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT id, val, ROW_NUMBER() OVER (ORDER BY val) AS rn FROM (SELECT 1 AS id, 10 AS val UNION ALL SELECT 2, 20) t QUALIFY rn <= 1')
+SELECT id, val, ROW_NUMBER() OVER (ORDER BY val) AS rn FROM (SELECT 1 AS id, 10 AS val UNION ALL SELECT 2, 20) t QUALIFY rn <= 1
 ```
 
 ```mermaid
@@ -282,10 +282,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/scalar_cte.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT artist_id, (SELECT track_name AS t FROM old_tracks) AS scalar_track_name, (WITH esq AS (SELECT * FROM def) SELECT id FROM esq), COUNT(order_id) AS total_orders FROM artists LEFT JOIN tracks USING (artist_id) LEFT JOIN (SELECT order_id FROM orders) USING (track_id) WHERE track_id NOT IN (SELECT track_id FROM old_track_2) GROUP BY 1,2,3')
+SELECT artist_id, (SELECT track_name AS t FROM old_tracks) AS scalar_track_name, (WITH esq AS (SELECT * FROM def) SELECT id FROM esq), COUNT(order_id) AS total_orders FROM artists LEFT JOIN tracks USING (artist_id) LEFT JOIN (SELECT order_id FROM orders) USING (track_id) WHERE track_id NOT IN (SELECT track_id FROM old_track_2) GROUP BY 1,2,3
 ```
 
 ```mermaid
@@ -350,10 +350,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/scalar_order_by.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT id, name FROM users ORDER BY (SELECT score FROM config LIMIT 1)')
+SELECT id, name FROM users ORDER BY (SELECT score FROM config LIMIT 1)
 ```
 
 ```mermaid
@@ -384,10 +384,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/subquery.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT * FROM (SELECT 1 AS x) AS sub')
+SELECT * FROM (SELECT 1 AS x) AS sub
 ```
 
 ```mermaid
@@ -409,10 +409,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/table_function_only.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT * FROM generate_series(1, 5) AS gs(i)')
+SELECT * FROM generate_series(1, 5) AS gs(i)
 ```
 
 ```mermaid
@@ -434,10 +434,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/union.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('WITH seeds AS (SELECT val FROM generate_series(1,4789) gs(val) UNION SELECT val FROM generate_series(5001,8401) gs(val)), voyages AS (SELECT number FROM ''voyages.csv''), voyages_missing AS (SELECT ''voyages'' AS table, seeds.val AS missing_id FROM seeds LEFT JOIN voyages ON seeds.val = voyages.number::INT WHERE voyages.number IS NULL) SELECT * FROM voyages_missing')
+WITH seeds AS (SELECT val FROM generate_series(1,4789) gs(val) UNION SELECT val FROM generate_series(5001,8401) gs(val)), voyages AS (SELECT number FROM 'voyages.csv'), voyages_missing AS (SELECT 'voyages' AS table, seeds.val AS missing_id FROM seeds LEFT JOIN voyages ON seeds.val = voyages.number::INT WHERE voyages.number IS NULL) SELECT * FROM voyages_missing
 ```
 
 ```mermaid
@@ -485,10 +485,10 @@ flowchart TD
 
 - Fixture: `tests/fixtures/where_exists.json`
 
-DuckDB call used to generate the payload:
+SQL used to generate the payload:
 
 ```sql
-json_serialize_sql('SELECT * FROM orders o WHERE EXISTS (SELECT 1 FROM products p WHERE p.id = o.product_id)')
+SELECT * FROM orders o WHERE EXISTS (SELECT 1 FROM products p WHERE p.id = o.product_id)
 ```
 
 ```mermaid

@@ -31,6 +31,16 @@ function mdEscapeInline(code: string): string {
   return code.replace(/`/g, "\\`");
 }
 
+function unwrapSqlFromJsonSerializeSqlCall(statement: string): string | null {
+  // Fixtures store the DuckDB expression, commonly:
+  //   json_serialize_sql('SELECT ...')
+  // We want the inner SQL. DuckDB escapes single quotes inside the literal as ''.
+  const trimmed = statement.trim();
+  const m = trimmed.match(/^json_serialize_sql\('([\s\S]*)'\)$/);
+  if (!m) return null;
+  return m[1].replace(/''/g, "'");
+}
+
 function listFixtureNames(fixturesDir: string): string[] {
   return readdirSync(fixturesDir)
     .filter((f) => f.endsWith(".json") && !f.endsWith(".expected.json"))
@@ -80,10 +90,11 @@ function renderExamples(repoRoot: string, fixturesDir: string): string {
     }
 
     if (fixture.kind === "wrapped") {
-      lines.push("DuckDB call used to generate the payload:");
+      const rawSql = unwrapSqlFromJsonSerializeSqlCall(fixture.statement);
+      lines.push("SQL used to generate the payload:");
       lines.push("");
       lines.push("```sql");
-      lines.push(fixture.statement);
+      lines.push(rawSql ?? fixture.statement);
       lines.push("```");
       lines.push("");
     }
