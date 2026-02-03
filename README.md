@@ -65,6 +65,19 @@ echo '{"error":false,"statements":[...]}' | node dist/cli.js --format mermaid
 
 With `npx withy` (after `npm link` or install): `npx withy -f mermaid path/to/file.json`.
 
+
+## Getting input from DuckDB
+
+In DuckDB:
+
+```sql
+SELECT json_serialize_sql('SELECT * FROM (SELECT 1 AS x) AS sub');
+SELECT json_serialize_sql('WITH cte1 AS (SELECT 1) SELECT * FROM cte1');
+```
+
+Use the returned JSON string as input to withy.
+
+
 ### Example
 
 Raw query (DuckDB `json_serialize_sql` input):
@@ -145,17 +158,6 @@ flowchart TD
   linkStyle 9 stroke:#f9a825,stroke-width:2px,color:#f57f17
   linkStyle 10 stroke:#2e7d32,stroke-width:2.5px,color:#1b5e20
 ```
-
-## Getting input from DuckDB
-
-In DuckDB:
-
-```sql
-SELECT json_serialize_sql('SELECT * FROM (SELECT 1 AS x) AS sub');
-SELECT json_serialize_sql('WITH cte1 AS (SELECT 1) SELECT * FROM cte1');
-```
-
-Use the returned JSON string as input to withy.
 
 ## Scripts
 
