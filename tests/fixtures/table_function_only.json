@@ -1,0 +1,98 @@
+[
+    {
+        "json_serialize_sql('SELECT * FROM generate_series(1, 5) AS gs(i)')": {
+            "error": false,
+            "statements": [
+                {
+                    "node": {
+                        "type": "SELECT_NODE",
+                        "modifiers": [],
+                        "cte_map": {
+                            "map": []
+                        },
+                        "select_list": [
+                            {
+                                "class": "STAR",
+                                "type": "STAR",
+                                "alias": "",
+                                "query_location": 8,
+                                "relation_name": "",
+                                "exclude_list": [],
+                                "replace_list": [],
+                                "columns": false,
+                                "expr": null,
+                                "qualified_exclude_list": [],
+                                "rename_list": []
+                            }
+                        ],
+                        "from_table": {
+                            "type": "TABLE_FUNCTION",
+                            "alias": "gs",
+                            "sample": null,
+                            "query_location": 15,
+                            "function": {
+                                "class": "FUNCTION",
+                                "type": "FUNCTION",
+                                "alias": "",
+                                "query_location": 15,
+                                "function_name": "generate_series",
+                                "schema": "",
+                                "children": [
+                                    {
+                                        "class": "CONSTANT",
+                                        "type": "VALUE_CONSTANT",
+                                        "alias": "",
+                                        "query_location": 31,
+                                        "value": {
+                                            "type": {
+                                                "id": "INTEGER",
+                                                "type_info": null
+                                            },
+                                            "is_null": false,
+                                            "value": 1
+                                        }
+                                    },
+                                    {
+                                        "class": "CONSTANT",
+                                        "type": "VALUE_CONSTANT",
+                                        "alias": "",
+                                        "query_location": 34,
+                                        "value": {
+                                            "type": {
+                                                "id": "INTEGER",
+                                                "type_info": null
+                                            },
+                                            "is_null": false,
+                                            "value": 5
+                                        }
+                                    }
+                                ],
+                                "filter": null,
+                                "order_bys": {
+                                    "type": "ORDER_MODIFIER",
+                                    "orders": []
+                                },
+                                "distinct": false,
+                                "is_operator": false,
+                                "export_state": false,
+                                "catalog": ""
+                            },
+                            "column_name_alias": [
+                                "i"
+                            ],
+                            "with_ordinality": "WITHOUT_ORDINALITY"
+                        },
+                        "where_clause": null,
+                        "group_expressions": [],
+                        "group_sets": [],
+                        "aggregate_handling": "STANDARD_HANDLING",
+                        "having": null,
+                        "sample": null,
+                        "qualify": null
+                    },
+                    "named_param_map": []
+                }
+            ]
+        }
+    }
+]

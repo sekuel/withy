@@ -1,0 +1,129 @@
+[
+    {
+        "json_serialize_sql('SELECT * FROM orders o WHERE EXISTS (SELECT 1 FROM products p WHERE p.id = o.product_id)')": {
+            "error": false,
+            "statements": [
+                {
+                    "node": {
+                        "type": "SELECT_NODE",
+                        "modifiers": [],
+                        "cte_map": {
+                            "map": []
+                        },
+                        "select_list": [
+                            {
+                                "class": "STAR",
+                                "type": "STAR",
+                                "alias": "",
+                                "query_location": 8,
+                                "relation_name": "",
+                                "exclude_list": [],
+                                "replace_list": [],
+                                "columns": false,
+                                "expr": null,
+                                "qualified_exclude_list": [],
+                                "rename_list": []
+                            }
+                        ],
+                        "from_table": {
+                            "type": "BASE_TABLE",
+                            "alias": "o",
+                            "sample": null,
+                            "query_location": 15,
+                            "schema_name": "",
+                            "table_name": "orders",
+                            "column_name_alias": [],
+                            "catalog_name": "",
+                            "at_clause": null
+                        },
+                        "where_clause": {
+                            "class": "SUBQUERY",
+                            "type": "SUBQUERY",
+                            "alias": "",
+                            "query_location": 30,
+                            "subquery_type": "EXISTS",
+                            "subquery": {
+                                "node": {
+                                    "type": "SELECT_NODE",
+                                    "modifiers": [],
+                                    "cte_map": {
+                                        "map": []
+                                    },
+                                    "select_list": [
+                                        {
+                                            "class": "CONSTANT",
+                                            "type": "VALUE_CONSTANT",
+                                            "alias": "",
+                                            "query_location": 45,
+                                            "value": {
+                                                "type": {
+                                                    "id": "INTEGER",
+                                                    "type_info": null
+                                                },
+                                                "is_null": false,
+                                                "value": 1
+                                            }
+                                        }
+                                    ],
+                                    "from_table": {
+                                        "type": "BASE_TABLE",
+                                        "alias": "p",
+                                        "sample": null,
+                                        "query_location": 52,
+                                        "schema_name": "",
+                                        "table_name": "products",
+                                        "column_name_alias": [],
+                                        "catalog_name": "",
+                                        "at_clause": null
+                                    },
+                                    "where_clause": {
+                                        "class": "COMPARISON",
+                                        "type": "COMPARE_EQUAL",
+                                        "alias": "",
+                                        "query_location": 74,
+                                        "left": {
+                                            "class": "COLUMN_REF",
+                                            "type": "COLUMN_REF",
+                                            "alias": "",
+                                            "query_location": 69,
+                                            "column_names": [
+                                                "p",
+                                                "id"
+                                            ]
+                                        },
+                                        "right": {
+                                            "class": "COLUMN_REF",
+                                            "type": "COLUMN_REF",
+                                            "alias": "",
+                                            "query_location": 76,
+                                            "column_names": [
+                                                "o",
+                                                "product_id"
+                                            ]
+                                        }
+                                    },
+                                    "group_expressions": [],
+                                    "group_sets": [],
+                                    "aggregate_handling": "STANDARD_HANDLING",
+                                    "having": null,
+                                    "sample": null,
+                                    "qualify": null
+                                },
+                                "named_param_map": []
+                            },
+                            "child": null,
+                            "comparison_type": "INVALID"
+                        },
+                        "group_expressions": [],
+                        "group_sets": [],
+                        "aggregate_handling": "STANDARD_HANDLING",
+                        "having": null,
+                        "sample": null,
+                        "qualify": null
+                    },
+                    "named_param_map": []
+                }
+            ]
+        }
+    }
+]

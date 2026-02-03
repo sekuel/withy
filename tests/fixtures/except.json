@@ -1,0 +1,164 @@
+[
+    {
+        "json_serialize_sql('SELECT n FROM (SELECT 1 AS n) EXCEPT SELECT n FROM (SELECT 2 AS n)')": {
+            "error": false,
+            "statements": [
+                {
+                    "node": {
+                        "type": "SET_OPERATION_NODE",
+                        "modifiers": [],
+                        "cte_map": {
+                            "map": []
+                        },
+                        "setop_type": "EXCEPT",
+                        "left": {
+                            "type": "SELECT_NODE",
+                            "modifiers": [],
+                            "cte_map": {
+                                "map": []
+                            },
+                            "select_list": [
+                                {
+                                    "class": "COLUMN_REF",
+                                    "type": "COLUMN_REF",
+                                    "alias": "",
+                                    "query_location": 8,
+                                    "column_names": [
+                                        "n"
+                                    ]
+                                }
+                            ],
+                            "from_table": {
+                                "type": "SUBQUERY",
+                                "alias": "",
+                                "sample": null,
+                                "query_location": 18446744073709551615,
+                                "subquery": {
+                                    "node": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": []
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "CONSTANT",
+                                                "type": "VALUE_CONSTANT",
+                                                "alias": "n",
+                                                "query_location": 23,
+                                                "value": {
+                                                    "type": {
+                                                        "id": "INTEGER",
+                                                        "type_info": null
+                                                    },
+                                                    "is_null": false,
+                                                    "value": 1
+                                                }
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "EMPTY",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 18446744073709551615
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "named_param_map": []
+                                },
+                                "column_name_alias": []
+                            },
+                            "where_clause": null,
+                            "group_expressions": [],
+                            "group_sets": [],
+                            "aggregate_handling": "STANDARD_HANDLING",
+                            "having": null,
+                            "sample": null,
+                            "qualify": null
+                        },
+                        "right": {
+                            "type": "SELECT_NODE",
+                            "modifiers": [],
+                            "cte_map": {
+                                "map": []
+                            },
+                            "select_list": [
+                                {
+                                    "class": "COLUMN_REF",
+                                    "type": "COLUMN_REF",
+                                    "alias": "",
+                                    "query_location": 45,
+                                    "column_names": [
+                                        "n"
+                                    ]
+                                }
+                            ],
+                            "from_table": {
+                                "type": "SUBQUERY",
+                                "alias": "",
+                                "sample": null,
+                                "query_location": 18446744073709551615,
+                                "subquery": {
+                                    "node": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": []
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "CONSTANT",
+                                                "type": "VALUE_CONSTANT",
+                                                "alias": "n",
+                                                "query_location": 60,
+                                                "value": {
+                                                    "type": {
+                                                        "id": "INTEGER",
+                                                        "type_info": null
+                                                    },
+                                                    "is_null": false,
+                                                    "value": 2
+                                                }
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "EMPTY",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 18446744073709551615
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "named_param_map": []
+                                },
+                                "column_name_alias": []
+                            },
+                            "where_clause": null,
+                            "group_expressions": [],
+                            "group_sets": [],
+                            "aggregate_handling": "STANDARD_HANDLING",
+                            "having": null,
+                            "sample": null,
+                            "qualify": null
+                        },
+                        "setop_all": false,
+                        "children": []
+                    },
+                    "named_param_map": []
+                }
+            ]
+        }
+    }
+]

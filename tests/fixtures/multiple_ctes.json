@@ -1,0 +1,147 @@
+[
+    {
+        "json_serialize_sql('WITH a AS (SELECT 1 AS id), b AS (SELECT id FROM a) SELECT * FROM b')": {
+            "error": false,
+            "statements": [
+                {
+                    "node": {
+                        "type": "SELECT_NODE",
+                        "modifiers": [],
+                        "cte_map": {
+                            "map": [
+                                {
+                                    "key": "a",
+                                    "value": {
+                                        "aliases": [],
+                                        "query": {
+                                            "node": {
+                                                "type": "SELECT_NODE",
+                                                "modifiers": [],
+                                                "cte_map": {
+                                                    "map": []
+                                                },
+                                                "select_list": [
+                                                    {
+                                                        "class": "CONSTANT",
+                                                        "type": "VALUE_CONSTANT",
+                                                        "alias": "id",
+                                                        "query_location": 19,
+                                                        "value": {
+                                                            "type": {
+                                                                "id": "INTEGER",
+                                                                "type_info": null
+                                                            },
+                                                            "is_null": false,
+                                                            "value": 1
+                                                        }
+                                                    }
+                                                ],
+                                                "from_table": {
+                                                    "type": "EMPTY",
+                                                    "alias": "",
+                                                    "sample": null,
+                                                    "query_location": 18446744073709551615
+                                                },
+                                                "where_clause": null,
+                                                "group_expressions": [],
+                                                "group_sets": [],
+                                                "aggregate_handling": "STANDARD_HANDLING",
+                                                "having": null,
+                                                "sample": null,
+                                                "qualify": null
+                                            },
+                                            "named_param_map": []
+                                        },
+                                        "materialized": "CTE_MATERIALIZE_DEFAULT",
+                                        "key_targets": []
+                                    }
+                                },
+                                {
+                                    "key": "b",
+                                    "value": {
+                                        "aliases": [],
+                                        "query": {
+                                            "node": {
+                                                "type": "SELECT_NODE",
+                                                "modifiers": [],
+                                                "cte_map": {
+                                                    "map": []
+                                                },
+                                                "select_list": [
+                                                    {
+                                                        "class": "COLUMN_REF",
+                                                        "type": "COLUMN_REF",
+                                                        "alias": "",
+                                                        "query_location": 47,
+                                                        "column_names": [
+                                                            "id"
+                                                        ]
+                                                    }
+                                                ],
+                                                "from_table": {
+                                                    "type": "BASE_TABLE",
+                                                    "alias": "",
+                                                    "sample": null,
+                                                    "query_location": 55,
+                                                    "schema_name": "",
+                                                    "table_name": "a",
+                                                    "column_name_alias": [],
+                                                    "catalog_name": "",
+                                                    "at_clause": null
+                                                },
+                                                "where_clause": null,
+                                                "group_expressions": [],
+                                                "group_sets": [],
+                                                "aggregate_handling": "STANDARD_HANDLING",
+                                                "having": null,
+                                                "sample": null,
+                                                "qualify": null
+                                            },
+                                            "named_param_map": []
+                                        },
+                                        "materialized": "CTE_MATERIALIZE_DEFAULT",
+                                        "key_targets": []
+                                    }
+                                }
+                            ]
+                        },
+                        "select_list": [
+                            {
+                                "class": "STAR",
+                                "type": "STAR",
+                                "alias": "",
+                                "query_location": 65,
+                                "relation_name": "",
+                                "exclude_list": [],
+                                "replace_list": [],
+                                "columns": false,
+                                "expr": null,
+                                "qualified_exclude_list": [],
+                                "rename_list": []
+                            }
+                        ],
+                        "from_table": {
+                            "type": "BASE_TABLE",
+                            "alias": "",
+                            "sample": null,
+                            "query_location": 72,
+                            "schema_name": "",
+                            "table_name": "b",
+                            "column_name_alias": [],
+                            "catalog_name": "",
+                            "at_clause": null
+                        },
+                        "where_clause": null,
+                        "group_expressions": [],
+                        "group_sets": [],
+                        "aggregate_handling": "STANDARD_HANDLING",
+                        "having": null,
+                        "sample": null,
+                        "qualify": null
+                    },
+                    "named_param_map": []
+                }
+            ]
+        }
+    }
+]

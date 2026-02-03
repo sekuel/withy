@@ -1,0 +1,134 @@
+[
+    {
+        "json_serialize_sql('SELECT id, name FROM users ORDER BY (SELECT score FROM config LIMIT 1)')": {
+            "error": false,
+            "statements": [
+                {
+                    "node": {
+                        "type": "SELECT_NODE",
+                        "modifiers": [
+                            {
+                                "type": "ORDER_MODIFIER",
+                                "orders": [
+                                    {
+                                        "type": "ORDER_DEFAULT",
+                                        "null_order": "ORDER_DEFAULT",
+                                        "expression": {
+                                            "class": "SUBQUERY",
+                                            "type": "SUBQUERY",
+                                            "alias": "",
+                                            "query_location": 36,
+                                            "subquery_type": "SCALAR",
+                                            "subquery": {
+                                                "node": {
+                                                    "type": "SELECT_NODE",
+                                                    "modifiers": [
+                                                        {
+                                                            "type": "LIMIT_MODIFIER",
+                                                            "limit": {
+                                                                "class": "CONSTANT",
+                                                                "type": "VALUE_CONSTANT",
+                                                                "alias": "",
+                                                                "query_location": 68,
+                                                                "value": {
+                                                                    "type": {
+                                                                        "id": "INTEGER",
+                                                                        "type_info": null
+                                                                    },
+                                                                    "is_null": false,
+                                                                    "value": 1
+                                                                }
+                                                            },
+                                                            "offset": null
+                                                        }
+                                                    ],
+                                                    "cte_map": {
+                                                        "map": []
+                                                    },
+                                                    "select_list": [
+                                                        {
+                                                            "class": "COLUMN_REF",
+                                                            "type": "COLUMN_REF",
+                                                            "alias": "",
+                                                            "query_location": 44,
+                                                            "column_names": [
+                                                                "score"
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "from_table": {
+                                                        "type": "BASE_TABLE",
+                                                        "alias": "",
+                                                        "sample": null,
+                                                        "query_location": 55,
+                                                        "schema_name": "",
+                                                        "table_name": "config",
+                                                        "column_name_alias": [],
+                                                        "catalog_name": "",
+                                                        "at_clause": null
+                                                    },
+                                                    "where_clause": null,
+                                                    "group_expressions": [],
+                                                    "group_sets": [],
+                                                    "aggregate_handling": "STANDARD_HANDLING",
+                                                    "having": null,
+                                                    "sample": null,
+                                                    "qualify": null
+                                                },
+                                                "named_param_map": []
+                                            },
+                                            "child": null,
+                                            "comparison_type": "INVALID"
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "cte_map": {
+                            "map": []
+                        },
+                        "select_list": [
+                            {
+                                "class": "COLUMN_REF",
+                                "type": "COLUMN_REF",
+                                "alias": "",
+                                "query_location": 7,
+                                "column_names": [
+                                    "id"
+                                ]
+                            },
+                            {
+                                "class": "COLUMN_REF",
+                                "type": "COLUMN_REF",
+                                "alias": "",
+                                "query_location": 11,
+                                "column_names": [
+                                    "name"
+                                ]
+                            }
+                        ],
+                        "from_table": {
+                            "type": "BASE_TABLE",
+                            "alias": "",
+                            "sample": null,
+                            "query_location": 21,
+                            "schema_name": "",
+                            "table_name": "users",
+                            "column_name_alias": [],
+                            "catalog_name": "",
+                            "at_clause": null
+                        },
+                        "where_clause": null,
+                        "group_expressions": [],
+                        "group_sets": [],
+                        "aggregate_handling": "STANDARD_HANDLING",
+                        "having": null,
+                        "sample": null,
+                        "qualify": null
+                    },
+                    "named_param_map": []
+                }
+            ]
+        }
+    }
+]

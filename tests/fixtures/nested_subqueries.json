@@ -1,0 +1,255 @@
+[
+    {
+        "json_serialize_sql('SELECT library_id, location, book_id FROM (SELECT library_id, location FROM (SELECT library_id, location, city FROM libraries)) JOIN (SELECT library_id, book_id FROM books) b ON l.library_id = b.library_id')": {
+            "error": false,
+            "statements": [
+                {
+                    "node": {
+                        "type": "SELECT_NODE",
+                        "modifiers": [],
+                        "cte_map": {
+                            "map": []
+                        },
+                        "select_list": [
+                            {
+                                "class": "COLUMN_REF",
+                                "type": "COLUMN_REF",
+                                "alias": "",
+                                "query_location": 7,
+                                "column_names": [
+                                    "library_id"
+                                ]
+                            },
+                            {
+                                "class": "COLUMN_REF",
+                                "type": "COLUMN_REF",
+                                "alias": "",
+                                "query_location": 18,
+                                "column_names": [
+                                    "location"
+                                ]
+                            },
+                            {
+                                "class": "COLUMN_REF",
+                                "type": "COLUMN_REF",
+                                "alias": "",
+                                "query_location": 28,
+                                "column_names": [
+                                    "book_id"
+                                ]
+                            }
+                        ],
+                        "from_table": {
+                            "type": "JOIN",
+                            "alias": "",
+                            "sample": null,
+                            "query_location": 127,
+                            "left": {
+                                "type": "SUBQUERY",
+                                "alias": "",
+                                "sample": null,
+                                "query_location": 18446744073709551615,
+                                "subquery": {
+                                    "node": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": []
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "COLUMN_REF",
+                                                "type": "COLUMN_REF",
+                                                "alias": "",
+                                                "query_location": 49,
+                                                "column_names": [
+                                                    "library_id"
+                                                ]
+                                            },
+                                            {
+                                                "class": "COLUMN_REF",
+                                                "type": "COLUMN_REF",
+                                                "alias": "",
+                                                "query_location": 61,
+                                                "column_names": [
+                                                    "location"
+                                                ]
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "SUBQUERY",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 18446744073709551615,
+                                            "subquery": {
+                                                "node": {
+                                                    "type": "SELECT_NODE",
+                                                    "modifiers": [],
+                                                    "cte_map": {
+                                                        "map": []
+                                                    },
+                                                    "select_list": [
+                                                        {
+                                                            "class": "COLUMN_REF",
+                                                            "type": "COLUMN_REF",
+                                                            "alias": "",
+                                                            "query_location": 83,
+                                                            "column_names": [
+                                                                "library_id"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "class": "COLUMN_REF",
+                                                            "type": "COLUMN_REF",
+                                                            "alias": "",
+                                                            "query_location": 95,
+                                                            "column_names": [
+                                                                "location"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "class": "COLUMN_REF",
+                                                            "type": "COLUMN_REF",
+                                                            "alias": "",
+                                                            "query_location": 105,
+                                                            "column_names": [
+                                                                "city"
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "from_table": {
+                                                        "type": "BASE_TABLE",
+                                                        "alias": "",
+                                                        "sample": null,
+                                                        "query_location": 115,
+                                                        "schema_name": "",
+                                                        "table_name": "libraries",
+                                                        "column_name_alias": [],
+                                                        "catalog_name": "",
+                                                        "at_clause": null
+                                                    },
+                                                    "where_clause": null,
+                                                    "group_expressions": [],
+                                                    "group_sets": [],
+                                                    "aggregate_handling": "STANDARD_HANDLING",
+                                                    "having": null,
+                                                    "sample": null,
+                                                    "qualify": null
+                                                },
+                                                "named_param_map": []
+                                            },
+                                            "column_name_alias": []
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "named_param_map": []
+                                },
+                                "column_name_alias": []
+                            },
+                            "right": {
+                                "type": "SUBQUERY",
+                                "alias": "b",
+                                "sample": null,
+                                "query_location": 18446744073709551615,
+                                "subquery": {
+                                    "node": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": []
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "COLUMN_REF",
+                                                "type": "COLUMN_REF",
+                                                "alias": "",
+                                                "query_location": 140,
+                                                "column_names": [
+                                                    "library_id"
+                                                ]
+                                            },
+                                            {
+                                                "class": "COLUMN_REF",
+                                                "type": "COLUMN_REF",
+                                                "alias": "",
+                                                "query_location": 152,
+                                                "column_names": [
+                                                    "book_id"
+                                                ]
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "BASE_TABLE",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 165,
+                                            "schema_name": "",
+                                            "table_name": "books",
+                                            "column_name_alias": [],
+                                            "catalog_name": "",
+                                            "at_clause": null
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "named_param_map": []
+                                },
+                                "column_name_alias": []
+                            },
+                            "condition": {
+                                "class": "COMPARISON",
+                                "type": "COMPARE_EQUAL",
+                                "alias": "",
+                                "query_location": 191,
+                                "left": {
+                                    "class": "COLUMN_REF",
+                                    "type": "COLUMN_REF",
+                                    "alias": "",
+                                    "query_location": 178,
+                                    "column_names": [
+                                        "l",
+                                        "library_id"
+                                    ]
+                                },
+                                "right": {
+                                    "class": "COLUMN_REF",
+                                    "type": "COLUMN_REF",
+                                    "alias": "",
+                                    "query_location": 193,
+                                    "column_names": [
+                                        "b",
+                                        "library_id"
+                                    ]
+                                }
+                            },
+                            "join_type": "INNER",
+                            "ref_type": "REGULAR",
+                            "using_columns": [],
+                            "delim_flipped": false,
+                            "duplicate_eliminated_columns": []
+                        },
+                        "where_clause": null,
+                        "group_expressions": [],
+                        "group_sets": [],
+                        "aggregate_handling": "STANDARD_HANDLING",
+                        "having": null,
+                        "sample": null,
+                        "qualify": null
+                    },
+                    "named_param_map": []
+                }
+            ]
+        }
+    }
+]

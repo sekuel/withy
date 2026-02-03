@@ -1,0 +1,421 @@
+[
+    {
+        "json_serialize_sql('SELECT artist_id, (SELECT track_name AS t FROM old_tracks) AS scalar_track_name, (WITH esq AS (SELECT * FROM def) SELECT id FROM esq), COUNT(order_id) AS total_orders FROM artists LEFT JOIN tracks USING (artist_id) LEFT JOIN (SELECT order_id FROM orders) USING (track_id) WHERE track_id NOT IN (SELECT track_id FROM old_track_2) GROUP BY 1,2,3')": {
+            "error": false,
+            "statements": [
+                {
+                    "node": {
+                        "type": "SELECT_NODE",
+                        "modifiers": [],
+                        "cte_map": {
+                            "map": []
+                        },
+                        "select_list": [
+                            {
+                                "class": "COLUMN_REF",
+                                "type": "COLUMN_REF",
+                                "alias": "",
+                                "query_location": 12,
+                                "column_names": [
+                                    "artist_id"
+                                ]
+                            },
+                            {
+                                "class": "SUBQUERY",
+                                "type": "SUBQUERY",
+                                "alias": "scalar_track_name",
+                                "query_location": 27,
+                                "subquery_type": "SCALAR",
+                                "subquery": {
+                                    "node": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": []
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "COLUMN_REF",
+                                                "type": "COLUMN_REF",
+                                                "alias": "t",
+                                                "query_location": 35,
+                                                "column_names": [
+                                                    "track_name"
+                                                ]
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "BASE_TABLE",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 56,
+                                            "schema_name": "",
+                                            "table_name": "old_tracks",
+                                            "column_name_alias": [],
+                                            "catalog_name": "",
+                                            "at_clause": null
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "named_param_map": []
+                                },
+                                "child": null,
+                                "comparison_type": "INVALID"
+                            },
+                            {
+                                "class": "SUBQUERY",
+                                "type": "SUBQUERY",
+                                "alias": "",
+                                "query_location": 94,
+                                "subquery_type": "SCALAR",
+                                "subquery": {
+                                    "node": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": [
+                                                {
+                                                    "key": "esq",
+                                                    "value": {
+                                                        "aliases": [],
+                                                        "query": {
+                                                            "node": {
+                                                                "type": "SELECT_NODE",
+                                                                "modifiers": [],
+                                                                "cte_map": {
+                                                                    "map": []
+                                                                },
+                                                                "select_list": [
+                                                                    {
+                                                                        "class": "STAR",
+                                                                        "type": "STAR",
+                                                                        "alias": "",
+                                                                        "query_location": 115,
+                                                                        "relation_name": "",
+                                                                        "exclude_list": [],
+                                                                        "replace_list": [],
+                                                                        "columns": false,
+                                                                        "expr": null,
+                                                                        "qualified_exclude_list": [],
+                                                                        "rename_list": []
+                                                                    }
+                                                                ],
+                                                                "from_table": {
+                                                                    "type": "BASE_TABLE",
+                                                                    "alias": "",
+                                                                    "sample": null,
+                                                                    "query_location": 122,
+                                                                    "schema_name": "",
+                                                                    "table_name": "def",
+                                                                    "column_name_alias": [],
+                                                                    "catalog_name": "",
+                                                                    "at_clause": null
+                                                                },
+                                                                "where_clause": null,
+                                                                "group_expressions": [],
+                                                                "group_sets": [],
+                                                                "aggregate_handling": "STANDARD_HANDLING",
+                                                                "having": null,
+                                                                "sample": null,
+                                                                "qualify": null
+                                                            },
+                                                            "named_param_map": []
+                                                        },
+                                                        "materialized": "CTE_MATERIALIZE_DEFAULT",
+                                                        "key_targets": []
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "COLUMN_REF",
+                                                "type": "COLUMN_REF",
+                                                "alias": "",
+                                                "query_location": 134,
+                                                "column_names": [
+                                                    "id"
+                                                ]
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "BASE_TABLE",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 142,
+                                            "schema_name": "",
+                                            "table_name": "esq",
+                                            "column_name_alias": [],
+                                            "catalog_name": "",
+                                            "at_clause": null
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "named_param_map": []
+                                },
+                                "child": null,
+                                "comparison_type": "INVALID"
+                            },
+                            {
+                                "class": "FUNCTION",
+                                "type": "FUNCTION",
+                                "alias": "total_orders",
+                                "query_location": 152,
+                                "function_name": "count",
+                                "schema": "",
+                                "children": [
+                                    {
+                                        "class": "COLUMN_REF",
+                                        "type": "COLUMN_REF",
+                                        "alias": "",
+                                        "query_location": 158,
+                                        "column_names": [
+                                            "order_id"
+                                        ]
+                                    }
+                                ],
+                                "filter": null,
+                                "order_bys": {
+                                    "type": "ORDER_MODIFIER",
+                                    "orders": []
+                                },
+                                "distinct": false,
+                                "is_operator": false,
+                                "export_state": false,
+                                "catalog": ""
+                            }
+                        ],
+                        "from_table": {
+                            "type": "JOIN",
+                            "alias": "",
+                            "sample": null,
+                            "query_location": 232,
+                            "left": {
+                                "type": "JOIN",
+                                "alias": "",
+                                "sample": null,
+                                "query_location": 197,
+                                "left": {
+                                    "type": "BASE_TABLE",
+                                    "alias": "",
+                                    "sample": null,
+                                    "query_location": 189,
+                                    "schema_name": "",
+                                    "table_name": "artists",
+                                    "column_name_alias": [],
+                                    "catalog_name": "",
+                                    "at_clause": null
+                                },
+                                "right": {
+                                    "type": "BASE_TABLE",
+                                    "alias": "",
+                                    "sample": null,
+                                    "query_location": 207,
+                                    "schema_name": "",
+                                    "table_name": "tracks",
+                                    "column_name_alias": [],
+                                    "catalog_name": "",
+                                    "at_clause": null
+                                },
+                                "condition": null,
+                                "join_type": "LEFT",
+                                "ref_type": "REGULAR",
+                                "using_columns": [
+                                    "artist_id"
+                                ],
+                                "delim_flipped": false,
+                                "duplicate_eliminated_columns": []
+                            },
+                            "right": {
+                                "type": "SUBQUERY",
+                                "alias": "",
+                                "sample": null,
+                                "query_location": 18446744073709551615,
+                                "subquery": {
+                                    "node": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": []
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "COLUMN_REF",
+                                                "type": "COLUMN_REF",
+                                                "alias": "",
+                                                "query_location": 250,
+                                                "column_names": [
+                                                    "order_id"
+                                                ]
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "BASE_TABLE",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 264,
+                                            "schema_name": "",
+                                            "table_name": "orders",
+                                            "column_name_alias": [],
+                                            "catalog_name": "",
+                                            "at_clause": null
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "named_param_map": []
+                                },
+                                "column_name_alias": []
+                            },
+                            "condition": null,
+                            "join_type": "LEFT",
+                            "ref_type": "REGULAR",
+                            "using_columns": [
+                                "track_id"
+                            ],
+                            "delim_flipped": false,
+                            "duplicate_eliminated_columns": []
+                        },
+                        "where_clause": {
+                            "class": "OPERATOR",
+                            "type": "OPERATOR_NOT",
+                            "alias": "",
+                            "query_location": 309,
+                            "children": [
+                                {
+                                    "class": "SUBQUERY",
+                                    "type": "SUBQUERY",
+                                    "alias": "",
+                                    "query_location": 309,
+                                    "subquery_type": "ANY",
+                                    "subquery": {
+                                        "node": {
+                                            "type": "SELECT_NODE",
+                                            "modifiers": [],
+                                            "cte_map": {
+                                                "map": []
+                                            },
+                                            "select_list": [
+                                                {
+                                                    "class": "COLUMN_REF",
+                                                    "type": "COLUMN_REF",
+                                                    "alias": "",
+                                                    "query_location": 324,
+                                                    "column_names": [
+                                                        "track_id"
+                                                    ]
+                                                }
+                                            ],
+                                            "from_table": {
+                                                "type": "BASE_TABLE",
+                                                "alias": "",
+                                                "sample": null,
+                                                "query_location": 338,
+                                                "schema_name": "",
+                                                "table_name": "old_track_2",
+                                                "column_name_alias": [],
+                                                "catalog_name": "",
+                                                "at_clause": null
+                                            },
+                                            "where_clause": null,
+                                            "group_expressions": [],
+                                            "group_sets": [],
+                                            "aggregate_handling": "STANDARD_HANDLING",
+                                            "having": null,
+                                            "sample": null,
+                                            "qualify": null
+                                        },
+                                        "named_param_map": []
+                                    },
+                                    "child": {
+                                        "class": "COLUMN_REF",
+                                        "type": "COLUMN_REF",
+                                        "alias": "",
+                                        "query_location": 297,
+                                        "column_names": [
+                                            "track_id"
+                                        ]
+                                    },
+                                    "comparison_type": "COMPARE_EQUAL"
+                                }
+                            ]
+                        },
+                        "group_expressions": [
+                            {
+                                "class": "CONSTANT",
+                                "type": "VALUE_CONSTANT",
+                                "alias": "",
+                                "query_location": 360,
+                                "value": {
+                                    "type": {
+                                        "id": "INTEGER",
+                                        "type_info": null
+                                    },
+                                    "is_null": false,
+                                    "value": 1
+                                }
+                            },
+                            {
+                                "class": "CONSTANT",
+                                "type": "VALUE_CONSTANT",
+                                "alias": "",
+                                "query_location": 362,
+                                "value": {
+                                    "type": {
+                                        "id": "INTEGER",
+                                        "type_info": null
+                                    },
+                                    "is_null": false,
+                                    "value": 2
+                                }
+                            },
+                            {
+                                "class": "CONSTANT",
+                                "type": "VALUE_CONSTANT",
+                                "alias": "",
+                                "query_location": 364,
+                                "value": {
+                                    "type": {
+                                        "id": "INTEGER",
+                                        "type_info": null
+                                    },
+                                    "is_null": false,
+                                    "value": 3
+                                }
+                            }
+                        ],
+                        "group_sets": [
+                            [
+                                0,
+                                1,
+                                2
+                            ]
+                        ],
+                        "aggregate_handling": "STANDARD_HANDLING",
+                        "having": null,
+                        "sample": null,
+                        "qualify": null
+                    },
+                    "named_param_map": []
+                }
+            ]
+        }
+    }
+]

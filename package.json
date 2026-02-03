@@ -1,0 +1,43 @@
+{
+  "name": "withy",
+  "version": "0.1.0",
+  "description": "Parse DuckDB json_serialize_sql output to visualize query lineage (CTEs, subqueries)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "withy": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "duckdb",
+    "sql",
+    "lineage",
+    "cte",
+    "subquery"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.19.7",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.6"
+  }
+}

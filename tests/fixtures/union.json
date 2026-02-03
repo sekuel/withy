@@ -1,0 +1,423 @@
+[
+    {
+        "json_serialize_sql('WITH seeds AS (SELECT val FROM generate_series(1,4789) gs(val) UNION SELECT val FROM generate_series(5001,8401) gs(val)), voyages AS (SELECT number FROM ''voyages.csv''), voyages_missing AS (SELECT ''voyages'' AS table, seeds.val AS missing_id FROM seeds LEFT JOIN voyages ON seeds.val = voyages.number::INT WHERE voyages.number IS NULL) SELECT * FROM voyages_missing')": {
+            "error": false,
+            "statements": [
+                {
+                    "node": {
+                        "type": "SELECT_NODE",
+                        "modifiers": [],
+                        "cte_map": {
+                            "map": [
+                                {
+                                    "key": "seeds",
+                                    "value": {
+                                        "aliases": [],
+                                        "query": {
+                                            "node": {
+                                                "type": "SET_OPERATION_NODE",
+                                                "modifiers": [],
+                                                "cte_map": {
+                                                    "map": []
+                                                },
+                                                "setop_type": "UNION",
+                                                "left": {
+                                                    "type": "SELECT_NODE",
+                                                    "modifiers": [],
+                                                    "cte_map": {
+                                                        "map": []
+                                                    },
+                                                    "select_list": [
+                                                        {
+                                                            "class": "COLUMN_REF",
+                                                            "type": "COLUMN_REF",
+                                                            "alias": "",
+                                                            "query_location": 27,
+                                                            "column_names": [
+                                                                "val"
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "from_table": {
+                                                        "type": "TABLE_FUNCTION",
+                                                        "alias": "gs",
+                                                        "sample": null,
+                                                        "query_location": 36,
+                                                        "function": {
+                                                            "class": "FUNCTION",
+                                                            "type": "FUNCTION",
+                                                            "alias": "",
+                                                            "query_location": 36,
+                                                            "function_name": "generate_series",
+                                                            "schema": "",
+                                                            "children": [
+                                                                {
+                                                                    "class": "CONSTANT",
+                                                                    "type": "VALUE_CONSTANT",
+                                                                    "alias": "",
+                                                                    "query_location": 52,
+                                                                    "value": {
+                                                                        "type": {
+                                                                            "id": "INTEGER",
+                                                                            "type_info": null
+                                                                        },
+                                                                        "is_null": false,
+                                                                        "value": 1
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "class": "CONSTANT",
+                                                                    "type": "VALUE_CONSTANT",
+                                                                    "alias": "",
+                                                                    "query_location": 54,
+                                                                    "value": {
+                                                                        "type": {
+                                                                            "id": "INTEGER",
+                                                                            "type_info": null
+                                                                        },
+                                                                        "is_null": false,
+                                                                        "value": 4789
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "filter": null,
+                                                            "order_bys": {
+                                                                "type": "ORDER_MODIFIER",
+                                                                "orders": []
+                                                            },
+                                                            "distinct": false,
+                                                            "is_operator": false,
+                                                            "export_state": false,
+                                                            "catalog": ""
+                                                        },
+                                                        "column_name_alias": [
+                                                            "val"
+                                                        ],
+                                                        "with_ordinality": "WITHOUT_ORDINALITY"
+                                                    },
+                                                    "where_clause": null,
+                                                    "group_expressions": [],
+                                                    "group_sets": [],
+                                                    "aggregate_handling": "STANDARD_HANDLING",
+                                                    "having": null,
+                                                    "sample": null,
+                                                    "qualify": null
+                                                },
+                                                "right": {
+                                                    "type": "SELECT_NODE",
+                                                    "modifiers": [],
+                                                    "cte_map": {
+                                                        "map": []
+                                                    },
+                                                    "select_list": [
+                                                        {
+                                                            "class": "COLUMN_REF",
+                                                            "type": "COLUMN_REF",
+                                                            "alias": "",
+                                                            "query_location": 89,
+                                                            "column_names": [
+                                                                "val"
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "from_table": {
+                                                        "type": "TABLE_FUNCTION",
+                                                        "alias": "gs",
+                                                        "sample": null,
+                                                        "query_location": 98,
+                                                        "function": {
+                                                            "class": "FUNCTION",
+                                                            "type": "FUNCTION",
+                                                            "alias": "",
+                                                            "query_location": 98,
+                                                            "function_name": "generate_series",
+                                                            "schema": "",
+                                                            "children": [
+                                                                {
+                                                                    "class": "CONSTANT",
+                                                                    "type": "VALUE_CONSTANT",
+                                                                    "alias": "",
+                                                                    "query_location": 114,
+                                                                    "value": {
+                                                                        "type": {
+                                                                            "id": "INTEGER",
+                                                                            "type_info": null
+                                                                        },
+                                                                        "is_null": false,
+                                                                        "value": 5001
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "class": "CONSTANT",
+                                                                    "type": "VALUE_CONSTANT",
+                                                                    "alias": "",
+                                                                    "query_location": 119,
+                                                                    "value": {
+                                                                        "type": {
+                                                                            "id": "INTEGER",
+                                                                            "type_info": null
+                                                                        },
+                                                                        "is_null": false,
+                                                                        "value": 8401
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "filter": null,
+                                                            "order_bys": {
+                                                                "type": "ORDER_MODIFIER",
+                                                                "orders": []
+                                                            },
+                                                            "distinct": false,
+                                                            "is_operator": false,
+                                                            "export_state": false,
+                                                            "catalog": ""
+                                                        },
+                                                        "column_name_alias": [
+                                                            "val"
+                                                        ],
+                                                        "with_ordinality": "WITHOUT_ORDINALITY"
+                                                    },
+                                                    "where_clause": null,
+                                                    "group_expressions": [],
+                                                    "group_sets": [],
+                                                    "aggregate_handling": "STANDARD_HANDLING",
+                                                    "having": null,
+                                                    "sample": null,
+                                                    "qualify": null
+                                                },
+                                                "setop_all": false,
+                                                "children": []
+                                            },
+                                            "named_param_map": []
+                                        },
+                                        "materialized": "CTE_MATERIALIZE_DEFAULT",
+                                        "key_targets": []
+                                    }
+                                },
+                                {
+                                    "key": "voyages",
+                                    "value": {
+                                        "aliases": [],
+                                        "query": {
+                                            "node": {
+                                                "type": "SELECT_NODE",
+                                                "modifiers": [],
+                                                "cte_map": {
+                                                    "map": []
+                                                },
+                                                "select_list": [
+                                                    {
+                                                        "class": "COLUMN_REF",
+                                                        "type": "COLUMN_REF",
+                                                        "alias": "",
+                                                        "query_location": 160,
+                                                        "column_names": [
+                                                            "number"
+                                                        ]
+                                                    }
+                                                ],
+                                                "from_table": {
+                                                    "type": "BASE_TABLE",
+                                                    "alias": "",
+                                                    "sample": null,
+                                                    "query_location": 172,
+                                                    "schema_name": "",
+                                                    "table_name": "voyages.csv",
+                                                    "column_name_alias": [],
+                                                    "catalog_name": "",
+                                                    "at_clause": null
+                                                },
+                                                "where_clause": null,
+                                                "group_expressions": [],
+                                                "group_sets": [],
+                                                "aggregate_handling": "STANDARD_HANDLING",
+                                                "having": null,
+                                                "sample": null,
+                                                "qualify": null
+                                            },
+                                            "named_param_map": []
+                                        },
+                                        "materialized": "CTE_MATERIALIZE_DEFAULT",
+                                        "key_targets": []
+                                    }
+                                },
+                                {
+                                    "key": "voyages_missing",
+                                    "value": {
+                                        "aliases": [],
+                                        "query": {
+                                            "node": {
+                                                "type": "SELECT_NODE",
+                                                "modifiers": [],
+                                                "cte_map": {
+                                                    "map": []
+                                                },
+                                                "select_list": [
+                                                    {
+                                                        "class": "CONSTANT",
+                                                        "type": "VALUE_CONSTANT",
+                                                        "alias": "table",
+                                                        "query_location": 229,
+                                                        "value": {
+                                                            "type": {
+                                                                "id": "VARCHAR",
+                                                                "type_info": null
+                                                            },
+                                                            "is_null": false,
+                                                            "value": "voyages"
+                                                        }
+                                                    },
+                                                    {
+                                                        "class": "COLUMN_REF",
+                                                        "type": "COLUMN_REF",
+                                                        "alias": "missing_id",
+                                                        "query_location": 257,
+                                                        "column_names": [
+                                                            "seeds",
+                                                            "val"
+                                                        ]
+                                                    }
+                                                ],
+                                                "from_table": {
+                                                    "type": "JOIN",
+                                                    "alias": "",
+                                                    "sample": null,
+                                                    "query_location": 300,
+                                                    "left": {
+                                                        "type": "BASE_TABLE",
+                                                        "alias": "",
+                                                        "sample": null,
+                                                        "query_location": 290,
+                                                        "schema_name": "",
+                                                        "table_name": "seeds",
+                                                        "column_name_alias": [],
+                                                        "catalog_name": "",
+                                                        "at_clause": null
+                                                    },
+                                                    "right": {
+                                                        "type": "BASE_TABLE",
+                                                        "alias": "",
+                                                        "sample": null,
+                                                        "query_location": 310,
+                                                        "schema_name": "",
+                                                        "table_name": "voyages",
+                                                        "column_name_alias": [],
+                                                        "catalog_name": "",
+                                                        "at_clause": null
+                                                    },
+                                                    "condition": {
+                                                        "class": "COMPARISON",
+                                                        "type": "COMPARE_EQUAL",
+                                                        "alias": "",
+                                                        "query_location": 331,
+                                                        "left": {
+                                                            "class": "COLUMN_REF",
+                                                            "type": "COLUMN_REF",
+                                                            "alias": "",
+                                                            "query_location": 321,
+                                                            "column_names": [
+                                                                "seeds",
+                                                                "val"
+                                                            ]
+                                                        },
+                                                        "right": {
+                                                            "class": "CAST",
+                                                            "type": "OPERATOR_CAST",
+                                                            "alias": "",
+                                                            "query_location": 347,
+                                                            "child": {
+                                                                "class": "COLUMN_REF",
+                                                                "type": "COLUMN_REF",
+                                                                "alias": "",
+                                                                "query_location": 333,
+                                                                "column_names": [
+                                                                    "voyages",
+                                                                    "number"
+                                                                ]
+                                                            },
+                                                            "cast_type": {
+                                                                "id": "INTEGER",
+                                                                "type_info": null
+                                                            },
+                                                            "try_cast": false
+                                                        }
+                                                    },
+                                                    "join_type": "LEFT",
+                                                    "ref_type": "REGULAR",
+                                                    "using_columns": [],
+                                                    "delim_flipped": false,
+                                                    "duplicate_eliminated_columns": []
+                                                },
+                                                "where_clause": {
+                                                    "class": "OPERATOR",
+                                                    "type": "OPERATOR_IS_NULL",
+                                                    "alias": "",
+                                                    "query_location": 378,
+                                                    "children": [
+                                                        {
+                                                            "class": "COLUMN_REF",
+                                                            "type": "COLUMN_REF",
+                                                            "alias": "",
+                                                            "query_location": 363,
+                                                            "column_names": [
+                                                                "voyages",
+                                                                "number"
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "group_expressions": [],
+                                                "group_sets": [],
+                                                "aggregate_handling": "STANDARD_HANDLING",
+                                                "having": null,
+                                                "sample": null,
+                                                "qualify": null
+                                            },
+                                            "named_param_map": []
+                                        },
+                                        "materialized": "CTE_MATERIALIZE_DEFAULT",
+                                        "key_targets": []
+                                    }
+                                }
+                            ]
+                        },
+                        "select_list": [
+                            {
+                                "class": "STAR",
+                                "type": "STAR",
+                                "alias": "",
+                                "query_location": 395,
+                                "relation_name": "",
+                                "exclude_list": [],
+                                "replace_list": [],
+                                "columns": false,
+                                "expr": null,
+                                "qualified_exclude_list": [],
+                                "rename_list": []
+                            }
+                        ],
+                        "from_table": {
+                            "type": "BASE_TABLE",
+                            "alias": "",
+                            "sample": null,
+                            "query_location": 402,
+                            "schema_name": "",
+                            "table_name": "voyages_missing",
+                            "column_name_alias": [],
+                            "catalog_name": "",
+                            "at_clause": null
+                        },
+                        "where_clause": null,
+                        "group_expressions": [],
+                        "group_sets": [],
+                        "aggregate_handling": "STANDARD_HANDLING",
+                        "having": null,
+                        "sample": null,
+                        "qualify": null
+                    },
+                    "named_param_map": []
+                }
+            ]
+        }
+    }
+]

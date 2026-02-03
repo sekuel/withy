@@ -1,0 +1,145 @@
+[
+    {
+        "json_serialize_sql('SELECT * FROM (SELECT 1 AS a) t1 CROSS JOIN (SELECT 2 AS b) t2')": {
+            "error": false,
+            "statements": [
+                {
+                    "node": {
+                        "type": "SELECT_NODE",
+                        "modifiers": [],
+                        "cte_map": {
+                            "map": []
+                        },
+                        "select_list": [
+                            {
+                                "class": "STAR",
+                                "type": "STAR",
+                                "alias": "",
+                                "query_location": 8,
+                                "relation_name": "",
+                                "exclude_list": [],
+                                "replace_list": [],
+                                "columns": false,
+                                "expr": null,
+                                "qualified_exclude_list": [],
+                                "rename_list": []
+                            }
+                        ],
+                        "from_table": {
+                            "type": "JOIN",
+                            "alias": "",
+                            "sample": null,
+                            "query_location": 34,
+                            "left": {
+                                "type": "SUBQUERY",
+                                "alias": "t1",
+                                "sample": null,
+                                "query_location": 18446744073709551615,
+                                "subquery": {
+                                    "node": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": []
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "CONSTANT",
+                                                "type": "VALUE_CONSTANT",
+                                                "alias": "a",
+                                                "query_location": 23,
+                                                "value": {
+                                                    "type": {
+                                                        "id": "INTEGER",
+                                                        "type_info": null
+                                                    },
+                                                    "is_null": false,
+                                                    "value": 1
+                                                }
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "EMPTY",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 18446744073709551615
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "named_param_map": []
+                                },
+                                "column_name_alias": []
+                            },
+                            "right": {
+                                "type": "SUBQUERY",
+                                "alias": "t2",
+                                "sample": null,
+                                "query_location": 18446744073709551615,
+                                "subquery": {
+                                    "node": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": []
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "CONSTANT",
+                                                "type": "VALUE_CONSTANT",
+                                                "alias": "b",
+                                                "query_location": 53,
+                                                "value": {
+                                                    "type": {
+                                                        "id": "INTEGER",
+                                                        "type_info": null
+                                                    },
+                                                    "is_null": false,
+                                                    "value": 2
+                                                }
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "EMPTY",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 18446744073709551615
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "named_param_map": []
+                                },
+                                "column_name_alias": []
+                            },
+                            "condition": null,
+                            "join_type": "INNER",
+                            "ref_type": "CROSS",
+                            "using_columns": [],
+                            "delim_flipped": false,
+                            "duplicate_eliminated_columns": []
+                        },
+                        "where_clause": null,
+                        "group_expressions": [],
+                        "group_sets": [],
+                        "aggregate_handling": "STANDARD_HANDLING",
+                        "having": null,
+                        "sample": null,
+                        "qualify": null
+                    },
+                    "named_param_map": []
+                }
+            ]
+        }
+    }
+]

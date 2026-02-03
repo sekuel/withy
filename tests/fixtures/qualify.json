@@ -1,0 +1,231 @@
+[
+    {
+        "json_serialize_sql('SELECT id, val, ROW_NUMBER() OVER (ORDER BY val) AS rn FROM (SELECT 1 AS id, 10 AS val UNION ALL SELECT 2, 20) t QUALIFY rn <= 1')": {
+            "error": false,
+            "statements": [
+                {
+                    "node": {
+                        "type": "SELECT_NODE",
+                        "modifiers": [],
+                        "cte_map": {
+                            "map": []
+                        },
+                        "select_list": [
+                            {
+                                "class": "COLUMN_REF",
+                                "type": "COLUMN_REF",
+                                "alias": "",
+                                "query_location": 8,
+                                "column_names": [
+                                    "id"
+                                ]
+                            },
+                            {
+                                "class": "COLUMN_REF",
+                                "type": "COLUMN_REF",
+                                "alias": "",
+                                "query_location": 12,
+                                "column_names": [
+                                    "val"
+                                ]
+                            },
+                            {
+                                "class": "WINDOW",
+                                "type": "WINDOW_ROW_NUMBER",
+                                "alias": "rn",
+                                "query_location": 17,
+                                "function_name": "row_number",
+                                "schema": "",
+                                "catalog": "",
+                                "children": [],
+                                "partitions": [],
+                                "orders": [
+                                    {
+                                        "type": "ORDER_DEFAULT",
+                                        "null_order": "ORDER_DEFAULT",
+                                        "expression": {
+                                            "class": "COLUMN_REF",
+                                            "type": "COLUMN_REF",
+                                            "alias": "",
+                                            "query_location": 45,
+                                            "column_names": [
+                                                "val"
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "start": "UNBOUNDED_PRECEDING",
+                                "end": "CURRENT_ROW_RANGE",
+                                "start_expr": null,
+                                "end_expr": null,
+                                "offset_expr": null,
+                                "default_expr": null,
+                                "ignore_nulls": false,
+                                "filter_expr": null,
+                                "exclude_clause": "NO_OTHER",
+                                "distinct": false,
+                                "arg_orders": []
+                            }
+                        ],
+                        "from_table": {
+                            "type": "SUBQUERY",
+                            "alias": "t",
+                            "sample": null,
+                            "query_location": 18446744073709551615,
+                            "subquery": {
+                                "node": {
+                                    "type": "SET_OPERATION_NODE",
+                                    "modifiers": [],
+                                    "cte_map": {
+                                        "map": []
+                                    },
+                                    "setop_type": "UNION",
+                                    "left": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": []
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "CONSTANT",
+                                                "type": "VALUE_CONSTANT",
+                                                "alias": "id",
+                                                "query_location": 69,
+                                                "value": {
+                                                    "type": {
+                                                        "id": "INTEGER",
+                                                        "type_info": null
+                                                    },
+                                                    "is_null": false,
+                                                    "value": 1
+                                                }
+                                            },
+                                            {
+                                                "class": "CONSTANT",
+                                                "type": "VALUE_CONSTANT",
+                                                "alias": "val",
+                                                "query_location": 78,
+                                                "value": {
+                                                    "type": {
+                                                        "id": "INTEGER",
+                                                        "type_info": null
+                                                    },
+                                                    "is_null": false,
+                                                    "value": 10
+                                                }
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "EMPTY",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 18446744073709551615
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "right": {
+                                        "type": "SELECT_NODE",
+                                        "modifiers": [],
+                                        "cte_map": {
+                                            "map": []
+                                        },
+                                        "select_list": [
+                                            {
+                                                "class": "CONSTANT",
+                                                "type": "VALUE_CONSTANT",
+                                                "alias": "",
+                                                "query_location": 105,
+                                                "value": {
+                                                    "type": {
+                                                        "id": "INTEGER",
+                                                        "type_info": null
+                                                    },
+                                                    "is_null": false,
+                                                    "value": 2
+                                                }
+                                            },
+                                            {
+                                                "class": "CONSTANT",
+                                                "type": "VALUE_CONSTANT",
+                                                "alias": "",
+                                                "query_location": 108,
+                                                "value": {
+                                                    "type": {
+                                                        "id": "INTEGER",
+                                                        "type_info": null
+                                                    },
+                                                    "is_null": false,
+                                                    "value": 20
+                                                }
+                                            }
+                                        ],
+                                        "from_table": {
+                                            "type": "EMPTY",
+                                            "alias": "",
+                                            "sample": null,
+                                            "query_location": 18446744073709551615
+                                        },
+                                        "where_clause": null,
+                                        "group_expressions": [],
+                                        "group_sets": [],
+                                        "aggregate_handling": "STANDARD_HANDLING",
+                                        "having": null,
+                                        "sample": null,
+                                        "qualify": null
+                                    },
+                                    "setop_all": true,
+                                    "children": []
+                                },
+                                "named_param_map": []
+                            },
+                            "column_name_alias": []
+                        },
+                        "where_clause": null,
+                        "group_expressions": [],
+                        "group_sets": [],
+                        "aggregate_handling": "STANDARD_HANDLING",
+                        "having": null,
+                        "sample": null,
+                        "qualify": {
+                            "class": "COMPARISON",
+                            "type": "COMPARE_LESSTHANOREQUALTO",
+                            "alias": "",
+                            "query_location": 125,
+                            "left": {
+                                "class": "COLUMN_REF",
+                                "type": "COLUMN_REF",
+                                "alias": "",
+                                "query_location": 122,
+                                "column_names": [
+                                    "rn"
+                                ]
+                            },
+                            "right": {
+                                "class": "CONSTANT",
+                                "type": "VALUE_CONSTANT",
+                                "alias": "",
+                                "query_location": 128,
+                                "value": {
+                                    "type": {
+                                        "id": "INTEGER",
+                                        "type_info": null
+                                    },
+                                    "is_null": false,
+                                    "value": 1
+                                }
+                            }
+                        }
+                    },
+                    "named_param_map": []
+                }
+            ]
+        }
+    }
+]
